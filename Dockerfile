@@ -1,23 +1,12 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10
+FROM python:3.10.8-slim-buster
 
-# Install ffmpeg
-RUN apt update && apt install -y ffmpeg
+RUN apt update && apt upgrade -y
+RUN apt install git -y
+COPY requirements.txt /requirements.txt
 
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV test
-
-# Run app.py when the container launches
-CMD ["python3", "video.py"]
+RUN cd /
+RUN pip3 install -U pip && pip3 install -U -r requirements.txt
+RUN mkdir /test
+WORKDIR /test
+COPY . /test
+CMD ["python", "video.py"]
