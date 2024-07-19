@@ -2,8 +2,7 @@
 FROM python:3.9-slim
 
 # Install ffmpeg
-RUN apt-get update && \
-    apt-get install -y ffmpeg
+RUN apt update && apt install -y ffmpeg
 
 # Set the working directory in the container
 WORKDIR /app
