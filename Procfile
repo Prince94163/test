@@ -1,1 +1,1 @@
-worker: python3 video.py
+worker: bash start.sh
