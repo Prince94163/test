@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.10
 
 # Install ffmpeg
 RUN apt update && apt install -y ffmpeg
